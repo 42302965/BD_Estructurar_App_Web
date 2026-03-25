@@ -7,6 +7,7 @@ package murach.email;
  * and open the template in the editor.
  */
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,17 +37,32 @@ public class EmailListServlet extends HttpServlet {
 
         //get current action
         String action = request.getParameter("action");
+        if (action == null) {
+            action = "join"; //default action
+        }
 
         // perform action and set URL to appropiate page
         if (action.equals("join")) {
             url = "/index.html";
-        } else if (action.equals("add")) {
+        }else if (action.equals("listado")){
+            //declaramos un objeto de tipo ArrayList
+            List<User> users = UserDB.getAllUsers();
+            
+            //establecemos el valor del atributo users con la lista obtenida d
+            //usuarios
+            request.setAttribute("users", users);         
+            
+            // especificamos la página a mostrar
+            url = "/listado-de-usuarios.jsp";
+        }else if (action.equals("add")) {
             //getParameters from the request
             request.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding("UTF-8");
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String email = request.getParameter("email");
 
+            System.out.println(lastName);
             // store data in User object and save User Object in database
             User user = new User(firstName, lastName, email);
             int result = UserDB.insert(user);
