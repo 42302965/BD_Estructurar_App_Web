@@ -6,7 +6,7 @@ package murach.data;
 
 /**
  *
- * @author GoLdE
+ * @author Ricardo
  */
 public class Error {
     public static String descripcion;    
