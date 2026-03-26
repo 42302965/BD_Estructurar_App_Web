@@ -17,7 +17,7 @@ import murach.data.UserDB;
 
 /**
  *
- * @author alopezorozco
+ * @author Ricardo
  */
 public class EmailListServlet extends HttpServlet {
 
