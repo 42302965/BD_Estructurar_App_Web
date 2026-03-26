@@ -11,7 +11,7 @@ import javax.naming.NamingException;
 
 /**
  *
- * @author GoLdE
+ * @author Ricardo
  */
 public class ConnectionPool {
     private static ConnectionPool pool = null;
