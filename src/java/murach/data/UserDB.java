@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Permite realizar las operaciones CRUD en la entidad
  * user de la base de datos murach
- * @author alopezorozco
+ * @author Ricardo
  */
 public class UserDB {
 
