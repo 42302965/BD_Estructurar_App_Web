@@ -9,6 +9,7 @@ import murach.business.User;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import murach.business.Rol;
 /**
  * Permite realizar las operaciones CRUD en la entidad
  * user de la base de datos murach
@@ -74,7 +75,7 @@ public class UserDB {
         ResultSet rs = null;
 
         //consulta para obtener todos los usuarios
-        String query = "SELECT * FROM user";
+        String query = "SELECT * FROM user, rol WHERE user.Id = rol.Id";
 
         try {
             //prepara la declaración SQL
@@ -88,6 +89,9 @@ public class UserDB {
 
             //creamos un objeto de tipo user
             User user = null;
+            
+            // creamos un objeto de tipo Rol
+            Rol rol = null;
 
             //se recorre la lista de elementos encontrados en la bd
             while (rs.next()) {
@@ -95,7 +99,12 @@ public class UserDB {
                 user.setFirstName(rs.getString("FirstName"));
                 user.setLastName(rs.getString("LastName"));
                 user.setEmail(rs.getString("Email"));
-
+                
+                // creamos la instanciación para el objeto rol.
+                rol = new Rol(rs.getInt("Id"), rs.getString("Nombre"), rs.getString("Descripcion"));
+                
+                user.setRol(rol);
+                
                 users.add(user); //se agrega el elemento a la colección.
             }
             

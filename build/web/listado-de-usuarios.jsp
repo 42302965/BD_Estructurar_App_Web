@@ -28,6 +28,7 @@
                     <a href="emailList?action=join" class="btn btn-info" role="button">Nuevo Usuario</a></td>
                 </div>
                 <div class="col">
+                    
                     <hr>
                     <table class="table table-striped">
                         <thead>
@@ -35,6 +36,7 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">FirstName</th>
                                 <th scope="col">LastName</th>
+                                <th scope="col">Rol</th>
                                 <th scope="col" colspan="2">Operaciones</th>
                             </tr>
                         </thead>
@@ -44,6 +46,7 @@
                                 <td>${user.email}</td>
                                 <td>${user.firstName}</td>
                                 <td>${user.lastName}</td>
+                                <td>${user.rol.nombre}</td>
                                 <td><a href="emailList?action=modificar&email=${user.email}" class="btn btn-info" role="button">Modificar</a></td>
                                 <td><a href="emailList?action=eliminar&email=${user.email}" class="btn btn-danger" role="button">Eliminar</a></td>
                             </tr>    
@@ -53,5 +56,6 @@
                 </div>
             </div>
         </div>
+
     </body>
 </html>
